@@ -5,7 +5,7 @@ The public static page at /request-audit.html uses Netlify Forms with a hidden f
 
 ## Owner setup and verification
 1. Deploy once after founder approval and passing PR checks.
-2. In the connected Netlify project, confirm the form archivewave-audit-request appears in Forms. Enable appropriate email notifications to an owner-controlled inbox; do not invent a contact address.
+2. In the connected Netlify project, confirm the form archivewave-audit-request appears in Forms. Configure submission notifications to Bferrell514@gmail.com (owner-provided contact); verify delivery with a synthetic submission. Notification configuration is not yet verified.
 3. Submit one clearly labeled synthetic test inquiry; verify it appears in Forms and notification routing works. Remove the test entry afterward.
 4. Review Netlify data handling and publish a privacy notice appropriate to the business before collecting real inquiries. If privacy/compliance review is incomplete, do not promote the form.
 5. Monitor spam and limits. Never copy private submission contents into public issues or CI logs.

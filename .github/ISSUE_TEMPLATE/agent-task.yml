@@ -1,0 +1,34 @@
+name: Agent Task
+description: Scoped ArchiveWave development task with evidence and acceptance criteria
+title: "[Agent] "
+labels: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and evidence
+      description: What is broken or missing? Include links and reproducible evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Concrete pass/fail outcomes and tests.
+    validations:
+      required: true
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - Low - UI or documentation
+        - Medium - scanner or report logic
+        - High - audio, security, payments, privacy, deployment
+    validations:
+      required: true
+  - type: textarea
+    id: guardrails
+    attributes:
+      label: Constraints and permissions
+      description: No production merge, paid services, customer contact, or audio publication without founder approval.

@@ -20,8 +20,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
-      - name: Verify audio test prerequisites
+      - name: Install audio test prerequisites
         run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
           command -v ffmpeg
           command -v ffprobe
           ffmpeg -version | head -n 1

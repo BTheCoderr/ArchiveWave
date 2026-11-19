@@ -1,0 +1,26 @@
+name: ArchiveWave PR Risk Map
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  risk-map:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Identify high-risk changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api "repos/$REPO/pulls/$PR_NUMBER/files" --paginate --jq '.[].filename' > changed.txt
+          echo "Files changed:"
+          cat changed.txt
+          if grep -E '(^src/app/api/|^tools/|^netlify\.toml$|^package(-lock)?\.json$|^\.github/workflows/)' changed.txt; then
+            echo "::warning::Sensitive deployment, dependencies, server, automation, or audio-processing changes require founder review."
+          fi
+          echo "Risk mapping complete; this is advisory, not an approval."

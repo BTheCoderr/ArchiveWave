@@ -16,4 +16,9 @@ jobs:
       - run: npm install --no-audit --no-fund
       - run: npx tsc --noEmit
       - run: npm run build
-      - run: python3 -m unittest discover -s tests -v
+      - name: Verify audio test prerequisites
+        run: |
+          command -v ffmpeg
+          command -v ffprobe
+      - name: Run Python tests including synthetic audio edit
+        run: python3 -m unittest discover -s tests -v
